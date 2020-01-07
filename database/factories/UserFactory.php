@@ -22,7 +22,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Depart::class, function (Faker $faker) {
     return [
-        'depart_number' => $faker->unique()->numberBetween(0,10),
+        'depart_number' => $faker->unique()->numberBetween(1,10),
         'name' => $faker->name,
         'dep_head' => $faker->name,
         'fin_responsible' => $faker->name,
@@ -31,14 +31,14 @@ $factory->define(Depart::class, function (Faker $faker) {
 });
 $factory->define(Main::class, function (Faker $faker) {
         $q = Depart::all();
-        foreach ($q as $e) {
+        foreach ($q as $dep_num) {
             return [
-                'depart' => $e->depart_number,
-                'inv_num' => $faker->name,
-                'name' => $faker->name,
-                'accepted' => $faker->numberBetween(0, 20),
-                'written_off' => $faker->numberBetween(0, 20),
-                'cost' => $faker->numberBetween(0, 20),
+                'depart' => random_int(1,$dep_num->depart_number),
+                'inv_num' => $faker->numberBetween(10000,90999990),
+                'name' => random(1,$dep_num->name),
+                'accepted' => $r = $faker->numberBetween(1,100),
+                'written_off' => ($faker->numberBetween(1, 100) < $r ),
+                'cost' => $faker->numberBetween(100.01, 10000),
 
             ];
         }
