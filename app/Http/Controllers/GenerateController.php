@@ -13,7 +13,9 @@ class GenerateController extends Controller
     public function index()
     {
         $сreate_data = new Depart();
-        $number = 0;
+//        start_time = currenttime;
+        $number = Depart::all();
+//        stop_time = currenttime - start_time;
         return view('generate', compact('сreate_data', 'number'));
 
     }
@@ -22,6 +24,7 @@ class GenerateController extends Controller
     {
 
     }
+
     /**
      * @param Request $request
      * @param $number
@@ -34,13 +37,13 @@ class GenerateController extends Controller
 
         try {
 //            for ($i = 0; $i < $number; $i++) {
-                $create_data->fill([
-                    'depart_number' => Str::random(10)->depart_number,
-                    'name' => Str::random(10)->name,
-                    'dep_head' => Str::random(10)->dep_head,
-                    'fin_responsible' => Str::random(10)->fin_responsible,
+            $create_data->fill([
+                'depart_number' => Str::random(10)->depart_number,
+                'name' => Str::random(10)->name,
+                'dep_head' => Str::random(10)->dep_head,
+                'fin_responsible' => Str::random(10)->fin_responsible,
 
-                ])->save();
+            ])->save();
 //            }
 
         } catch

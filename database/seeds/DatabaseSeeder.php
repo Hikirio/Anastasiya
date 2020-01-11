@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
     /**
      * Seed the application's database.
      *
@@ -11,7 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       factory(App\Depart::class,10)->create();
-       factory(App\Main::class,10)->create();
+        factory(App\Depart::class, 10)->create();
+        factory(App\Main::class, 10)->create();
+        factory(App\Little::class, 10)->create();
     }
 }

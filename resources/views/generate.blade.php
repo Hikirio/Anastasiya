@@ -45,10 +45,11 @@
             <div class="form-group">
                 <label for="task" class="col-sm-3 control-label"></label>
                 <div class="col-sm-2">
-{{--                    @foreach($gen_data as $g)--}}
+                    @foreach($number as $g)
 
-{{--                        {{'Имя'.$g->name}}.<br>--}}
-{{--                    @endforeach--}}
+                        {{'Имя'.$g->name}}.<br>
+
+                    @endforeach
                 </div>
             </div>
 
