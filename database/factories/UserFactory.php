@@ -23,7 +23,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Depart::class, function (Faker $faker) {
     return [
-        'depart_number' => $faker->unique()->numberBetween(1,10),
+        'depart_number' => $faker->unique()->numberBetween(1, 1000),
         'name' => str_random(10),
         'dep_head' => $faker->name,
         'fin_responsible' => $faker->name,
@@ -31,18 +31,21 @@ $factory->define(Depart::class, function (Faker $faker) {
     ];
 });
 $factory->define(Main::class, function (Faker $faker) {
-        $q = Depart::all();
-        foreach ($q as $dep_num) {
-            return [
-                'depart' => random_int(1,$dep_num->depart_number),
-                'inv_num' => $faker->numberBetween(10000,90999990),
-                'name' => str_random(10),
-                'accepted' => $r = $faker->numberBetween(1,100),
-                'written_off' => ($faker->numberBetween(1, 100) < $r ),
-                'cost' => $faker->numberBetween(100.01, 10000),
+    $q = Depart::all();
+    $r = $faker->numberBetween(1, 100);
+    foreach ($q as $dep_num) {
 
-            ];
-        }
+        return [
+
+            'depart' => random_int(1, $dep_num->depart_number),
+            'inv_num' => $faker->numberBetween(10000, 90999990),
+            'name' => str_random(10),
+            'accepted' => $s = $faker->numberBetween(1, 100),
+            'written_off' => $r < $s,
+            'cost' => $faker->numberBetween(100.01, 10000),
+
+        ];
+    }
 });
 $factory->define(Little::class, function (Faker $faker) {
     $q = Depart::all();
@@ -51,8 +54,8 @@ $factory->define(Little::class, function (Faker $faker) {
             'depart' => random_int(1, $dep_num->depart_number),
             'inv_num' => $faker->numberBetween(10000, 90999990),
             'name' => str_random(10),
-            'accepted' => $r = $faker->numberBetween(1, 100),
-            'written_off' => ($faker->numberBetween(1, 100) < $r),
+            'accepted' => $faker->numberBetween(1, 100),
+            'written_off' => ($faker->numberBetween(1, 100)),
             'cost' => $faker->numberBetween(0.01, 100),
         ];
     }
