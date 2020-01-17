@@ -17,4 +17,5 @@ Route::get('/', function () {
 Route::get('/generate', 'GenerateController@index');
 
 Route::put('/generate', 'GenerateController@store');
+Route::get('/test', 'TestController@index');
 
