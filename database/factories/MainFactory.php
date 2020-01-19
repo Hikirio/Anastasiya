@@ -19,12 +19,12 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Main::class, function (Faker $faker) {
-    return [
-        'depart_number' => $faker->unique()->numberBetween(0,20),
-        'name' => $faker->name,
-        'dep_head' => $faker->name,
-        'fin_responsible' => $faker->name,
-
-    ];
-});
+//$factory->define(Main::class, function (Faker $faker) {
+//    return [
+//        'depart_number' => $faker->unique()->numberBetween(0,20),
+//        'name' => $faker->name,
+//        'dep_head' => $faker->name,
+//        'fin_responsible' => $faker->name,
+//
+//    ];
+//});
