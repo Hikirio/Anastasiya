@@ -12,8 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Depart::class, 10)->create();
-        factory(App\Main::class, 10)->create();
-        factory(App\Little::class, 10)->create();
+        $start_time = microtime(true);
+
+        factory(App\Depart::class, 100000)->create();
+//        factory(App\Main::class, 100000)->create();
+//        factory(App\Little::class, 100000)->create();
+        echo 'Время выполнения запроса: ' . round(microtime(true) - $start_time, 4) . ' сек,'.'</br>' ;
     }
 }
